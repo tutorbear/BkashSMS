@@ -81,7 +81,7 @@ public class SMSReceiver extends BroadcastReceiver {
                 String timeStrNew = timeStr.replace(".", "");
 
                 String[] time = timeStrNew.split(":");
-                cal.set(Calendar.HOUR, Integer.parseInt(time[0]));
+                cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(time[0]));
                 cal.set(Calendar.MINUTE, Integer.parseInt(time[1]));
                 Log.d("Hello", "Time: "+time[0]+" "+time[1]);
 
@@ -130,7 +130,7 @@ public class SMSReceiver extends BroadcastReceiver {
                 String timeStrNew = timeStr.replace(".", "");
 
                 String[] time = timeStrNew.split(":");
-                cal.set(Calendar.HOUR, Integer.parseInt(time[0]));
+                cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(time[0]));
                 cal.set(Calendar.MINUTE, Integer.parseInt(time[1]));
                 Log.d("Hello", "Time: "+time[0]+" "+time[1]);
 
