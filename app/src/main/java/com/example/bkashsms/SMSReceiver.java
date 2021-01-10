@@ -68,7 +68,7 @@ public class SMSReceiver extends BroadcastReceiver {
 
                 //Date
                 Calendar cal = Calendar.getInstance();
-                cal.setTimeZone(TimeZone.getTimeZone("GMT"));
+                cal.setTimeZone(TimeZone.getTimeZone("UTC"));
                 String[] date = dateStr.split("/");
 
                 Log.d("Hello", "Date: "+date[0]+" "+date[1]+" "+date[2]);
@@ -117,7 +117,7 @@ public class SMSReceiver extends BroadcastReceiver {
 
                 //Date
                 Calendar cal = Calendar.getInstance();
-                cal.setTimeZone(TimeZone.getTimeZone("GMT"));
+                cal.setTimeZone(TimeZone.getTimeZone("UTC"));
                 String[] date = dateStr.split("/");
 
 
