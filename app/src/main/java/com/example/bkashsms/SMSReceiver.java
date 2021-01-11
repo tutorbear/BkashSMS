@@ -12,8 +12,10 @@ import android.widget.Toast;
 import com.parse.ParseObject;
 import com.parse.SaveCallback;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.TimeZone;
 
 public class SMSReceiver extends BroadcastReceiver {
@@ -66,35 +68,29 @@ public class SMSReceiver extends BroadcastReceiver {
                     }
                 }
 
-                //Date
-                Calendar cal = Calendar.getInstance();
-                cal.setTimeZone(TimeZone.getTimeZone("UTC"));
-                String[] date = dateStr.split("/");
+                //Date and Time
+                String timeAmPm = "";
+                try {
+                    final SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
+                    final Date dateObj = sdf.parse(timeStr);
 
-                Log.d("Hello", "Date: "+date[0]+" "+date[1]+" "+date[2]);
+                    timeAmPm = new SimpleDateFormat("hh:mm aa").format(dateObj)+"";
 
-                cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(date[0]));
-                cal.set(Calendar.MONTH, Integer.parseInt(date[1]) - 1);
-                cal.set(Calendar.YEAR, Integer.parseInt(date[2]));
+                } catch (final java.text.ParseException e) {
+                    Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
 
-                //Time
-                String timeStrNew = timeStr.replace(".", "");
-
-                String[] time = timeStrNew.split(":");
-                cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(time[0]));
-                cal.set(Calendar.MINUTE, Integer.parseInt(time[1]));
-                Log.d("Hello", "Time: "+time[0]+" "+time[1]);
+                String paidDate = dateStr + timeAmPm;
 
                 // Saves the new object.
                 ParseObject bKashObj = new ParseObject("Bkash");
                 bKashObj.put("trxId", trxId);
                 bKashObj.put("paidAmount", Double.parseDouble(amount));
-                bKashObj.put("paidDate", cal.getTime());
+                bKashObj.put("paidDate", paidDate);
                 bKashObj.saveEventually(e -> {
                     if (e == null) {
                         Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
                     } else {
-                        Log.d("Hello",e.getMessage()+"");
                         Toast.makeText(context, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -115,30 +111,25 @@ public class SMSReceiver extends BroadcastReceiver {
                     }
                 }
 
-                //Date
-                Calendar cal = Calendar.getInstance();
-                cal.setTimeZone(TimeZone.getTimeZone("UTC"));
-                String[] date = dateStr.split("/");
+                //Date and Time
+                String timeAmPm = "";
+                try {
+                    final SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
+                    final Date dateObj = sdf.parse(timeStr);
 
+                    timeAmPm = new SimpleDateFormat("hh:mm aa").format(dateObj)+"";
 
-                cal.set(Calendar.DATE, Integer.parseInt(date[0]));
-                cal.set(Calendar.MONTH, Integer.parseInt(date[1]) - 1);
-                cal.set(Calendar.YEAR, Integer.parseInt(date[2]));
-                Log.d("Hello", "Date: "+date[0]+" "+date[1]+" "+date[2]);
+                } catch (final java.text.ParseException e) {
+                    Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
 
-                //Time
-                String timeStrNew = timeStr.replace(".", "");
-
-                String[] time = timeStrNew.split(":");
-                cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(time[0]));
-                cal.set(Calendar.MINUTE, Integer.parseInt(time[1]));
-                Log.d("Hello", "Time: "+time[0]+" "+time[1]);
+                String paidDate = dateStr + timeAmPm;
 
                 // Saves the new object.
                 ParseObject bKashObj = new ParseObject("Bkash");
                 bKashObj.put("trxId", trxId);
                 bKashObj.put("paidAmount", Double.parseDouble(amount));
-                bKashObj.put("paidDate", cal.getTime());
+                bKashObj.put("paidDate", paidDate);
                 bKashObj.saveEventually(e -> {
                     if (e == null) {
                         Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
