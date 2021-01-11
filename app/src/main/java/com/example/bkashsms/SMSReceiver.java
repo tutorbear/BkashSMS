@@ -80,7 +80,7 @@ public class SMSReceiver extends BroadcastReceiver {
                     Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
-                String paidDate = dateStr + timeAmPm;
+                String paidDate = dateStr + " " +timeAmPm;
 
                 // Saves the new object.
                 ParseObject bKashObj = new ParseObject("Bkash");
@@ -123,7 +123,8 @@ public class SMSReceiver extends BroadcastReceiver {
                     Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
-                String paidDate = dateStr + timeAmPm;
+                String paidDate = dateStr + " " +timeAmPm;
+
 
                 // Saves the new object.
                 ParseObject bKashObj = new ParseObject("Bkash");
