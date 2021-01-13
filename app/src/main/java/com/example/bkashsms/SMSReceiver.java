@@ -91,6 +91,7 @@ public class SMSReceiver extends BroadcastReceiver {
                     if (e == null) {
                         Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
                     } else {
+                        Log.d("Hello",e.getMessage()+"");
                         Toast.makeText(context, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
