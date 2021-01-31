@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Bkash SMS</string>
     <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+<!--    -->
     <string name="back4app_app_id">e1LZ8SyDqF5eB5F1Qe1OWbeZlpVnRqYa7nPS6ZYd</string>
     <string name="back4app_client_key">Oh7AouMGgUIhSrA6kGoU4o6pAUox1LrwGkOZbw7W</string>
 
+<!--    <string name="back4app_app_id">NCXPlirlxOS0EsGItd0aNots9kCDvRanxR2Ylhd6</string>-->
+<!--    <string name="back4app_client_key">xYrOG5zNbKv3nvcVDo51tl1sKdnQxEp0KXbehKpq</string>-->
 </resources>
